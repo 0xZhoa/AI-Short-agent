@@ -260,7 +260,7 @@ export default function ProjectDetailPage() {
   );
 
   return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col bg-slate-100 text-slate-800 font-sans">
+    <div className="lg:h-screen lg:w-screen lg:overflow-hidden min-h-screen flex flex-col bg-slate-100 text-slate-800 font-sans">
       
       {/* 1. Top Header Bar */}
       <header className="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 shrink-0 z-10 shadow-sm">
@@ -276,7 +276,7 @@ export default function ProjectDetailPage() {
           <div className="flex items-center gap-2">
             <span className="text-xs text-slate-400 font-bold hover:underline cursor-pointer" onClick={() => router.push('/projects')}>Library</span>
             <span className="text-slate-350 text-xs">/</span>
-            <h1 className="text-xs font-bold text-slate-800 line-clamp-1 max-w-[200px] md:max-w-md">{project.topic}</h1>
+            <h1 className="text-xs font-bold text-slate-800 line-clamp-1 max-w-[120px] sm:max-w-[200px] md:max-w-md">{project.topic}</h1>
           </div>
           <div className="hidden lg:flex items-center gap-1.5 ml-4">
             <span className="text-[10px] bg-slate-50 border border-slate-200 text-slate-550 px-2 py-0.5 rounded font-semibold">
@@ -324,11 +324,11 @@ export default function ProjectDetailPage() {
       </header>
 
       {/* 2. Main Workspace Layout */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
         
         {/* Pane 1: Left Steps Nav Deck */}
-        <nav className="w-52 bg-white border-r border-slate-200 flex flex-col py-6 px-4 gap-1.5 shrink-0 shadow-sm">
-          <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest px-3 mb-2">Workspace Pipeline</span>
+        <nav className="w-full lg:w-52 bg-white border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-row lg:flex-col py-3 lg:py-6 px-4 gap-1.5 shrink-0 shadow-sm overflow-x-auto lg:overflow-x-visible scrollbar-none">
+          <span className="hidden lg:block text-[9px] text-slate-400 font-bold uppercase tracking-widest px-3 mb-2">Workspace Pipeline</span>
           {stepItems.map((step) => {
             const isCompleted = currentStep > step.stepIndex || (step.stepIndex === 1 && currentStep >= 2);
             const isCurrent = currentStep === step.stepIndex || (step.stepIndex === 1 && currentStep === 0);
@@ -344,7 +344,7 @@ export default function ProjectDetailPage() {
                 key={step.key}
                 disabled={!isUnlocked}
                 onClick={() => setActiveTab(step.key as any)}
-                className={`w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs font-bold transition-all ${
+                className={`whitespace-nowrap shrink-0 lg:w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between gap-3 text-xs font-bold transition-all ${
                   isActiveTab 
                     ? 'bg-[#7d2ae8]/8 text-[#7d2ae8] border border-[#7d2ae8]/20 shadow-sm'
                     : isUnlocked
@@ -363,14 +363,14 @@ export default function ProjectDetailPage() {
                   )}
                   <span>{step.name}</span>
                 </div>
-                {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-350" />}
+                {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-350 shrink-0" />}
               </button>
             );
           })}
         </nav>
 
         {/* Pane 2: Middle Control Sidebar */}
-        <aside className="w-72 bg-slate-50/65 border-r border-slate-200 p-5 flex flex-col justify-between shrink-0 overflow-y-auto shadow-sm">
+        <aside className="w-full lg:w-72 bg-slate-50/65 border-b lg:border-b-0 lg:border-r border-slate-200 p-5 flex flex-col justify-between shrink-0 lg:overflow-y-auto shadow-sm">
           <div className="space-y-5">
             <div>
               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
@@ -531,7 +531,7 @@ export default function ProjectDetailPage() {
         </aside>
 
         {/* Pane 3: Right Focus Workspace Area */}
-        <main className="flex-1 bg-slate-100/40 overflow-y-auto p-6 md:p-8 flex justify-center items-start">
+        <main className="flex-1 bg-slate-100/40 p-4 md:p-8 flex justify-center items-start lg:overflow-y-auto lg:h-full">
           <div className="max-w-4xl w-full">
             
             {/* The Document Artboard / Workspace Card */}
