@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f9fafb] text-slate-800 antialiased selection:bg-[#7d2ae8]/10 selection:text-[#7d2ae8];
+  }
+}
+
+/* Studio Design Tokens & Utilities */
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.glass-panel:hover {
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-[#7d2ae8] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent font-bold;
+}
+
+.gradient-btn {
+  @apply bg-[#7d2ae8] hover:bg-[#681ebb] text-white font-semibold border border-[#7d2ae8]/10 shadow-[0_3px_12px_rgba(125,42,232,0.15)] active:scale-[0.98] transition-all duration-150;
+}
+
+.gradient-btn:hover {
+  background-color: #681ebb;
+}
+
+.secondary-btn {
+  @apply bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border-none active:scale-[0.98] transition-all duration-150;
+}
+
+/* Custom Scrollbar matching Canva Style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Form Styles */
+input, select, textarea {
+  @apply bg-white border border-slate-200 text-slate-800 rounded-xl px-4 py-3 text-sm placeholder-slate-400 outline-none transition-colors duration-150 shadow-sm;
+}
+
+input:focus, select:focus, textarea:focus {
+  @apply border-[#7d2ae8] ring-4 ring-[#7d2ae8]/10;
+}
+
+
